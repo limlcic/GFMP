@@ -1,0 +1,32 @@
+The code in this package is only for academic communication.
+The code is for building gene-gene network and then devide it into modules.
+
+Dependent:
+The glasso software used here is from Rob Tibshirani , the Matlab package is available at  http://statweb.stanford.edu/~tibs/glasso/index.html 
+
+Installing:
+The glasso needs compiling by fortran compiler. We provided the compiled
+binary file for windows x64 and linux x64, but the other platforms need 
+compiling. To compile glasso, please make sure the right installion of 
+a fortran compiler (the related instruction could be found in  
+http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html)
+Then type 
+mex glasso.F
+
+Usage:
+The code is for three usage:
+1.  If your need to use raw data for module partition, you need to do the 
+    t-test at first, for example:
+    [ data, symbol] = ttest_for_raw_data(data,symbol,0.05 )
+    Then you can do network building and module partition, for example:
+    [ out ] = build_network_and_divide( symbol,data,0.1 , 1, 0.1, 20)
+
+2.  If you selected the gene previously, then you can do network building
+    and module partition directly, for example:
+    [ out ] = build_network_and_divide( symbol,data,0.1 , 1, 0.1, 20)
+
+3.  If you built a network, then you can devide it into modules, for example:
+    [ out ] = divide_network( network,symbol,20  )
+
+
+The details of the parameters could be found in the related functions.
